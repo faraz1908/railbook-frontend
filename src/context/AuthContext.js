@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 
-// 🚀 Live Backend URL (Render)
+// 🚀 Tera Live Backend URL
 const API_BASE_URL = "https://railbook-3mys.onrender.com";
 
 export const AuthProvider = ({ children }) => {
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // 🔥 Localhost HATA DIYA, ab Render se check hoga
+        // Direct axios call, no dependency on ./api
         const res = await axios.get(`${API_BASE_URL}/auth/login/success`, { 
           withCredentials: true 
         });

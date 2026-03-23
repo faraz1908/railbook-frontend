@@ -2,90 +2,70 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import AdminDashboard from './components/Admin/AdminDashboard'; 
-import './App.css'; 
 
-// 🚀 Tera Live Backend URL (Render)
 const API_BASE_URL = "https://railbook-3mys.onrender.com";
 
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isAdminView, setIsAdminView] = useState(false);
 
   useEffect(() => {
     const checkUser = async () => {
-      try {
-        // Naye Render URL se check kar rahe hain
-        const res = await axios.get(`${API_BASE_URL}/auth/login/success`, {
-          withCredentials: true,
-        });
-        if (res.data.success) {
-          setUser(res.data.user);
-        }
-      } catch (err) {
-        console.log("User not logged in");
-      } finally {
-        setLoading(false);
+      // 1. URL se token check karo (Google redirect ke baad)
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = urlParams.get("token");
+
+      if (tokenFromUrl) {
+        localStorage.setItem("rail_token", tokenFromUrl);
+        // URL saaf karo taaki token upar na dikhe
+        window.history.replaceState({}, document.title, "/");
       }
+
+      // 2. LocalStorage se token uthao
+      const savedToken = localStorage.getItem("rail_token");
+
+      if (savedToken) {
+        try {
+          const res = await axios.get(`${API_BASE_URL}/auth/login/success`, {
+            headers: { Authorization: `Bearer ${savedToken}` } // 🔥 HEADERS MEIN BHEJO
+          });
+          if (res.data.success) {
+            setUser(res.data.user);
+          }
+        } catch (err) {
+          console.log("Session expired or invalid token");
+          localStorage.removeItem("rail_token");
+        }
+      }
+      setLoading(false);
     };
     checkUser();
   }, []);
 
   const loginWithGoogle = () => {
-    // Google Auth redirect link update
     window.open(`${API_BASE_URL}/auth/google`, "_self");
   };
 
   const handleLogout = () => {
-    // Logout redirect link update
-    window.open(`${API_BASE_URL}/auth/logout`, "_self");
+    localStorage.removeItem("rail_token"); // Token delete karo
     setUser(null);
+    window.location.href = "/";
   };
 
-  if (loading) return (
-    <div className="loader-container">
-      Connecting to Rail<span>Book</span>...
-    </div>
-  );
+  if (loading) return <div className="loader-container">Connecting to RailBook...</div>;
 
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              user ? (
-                <Dashboard 
-                  user={user} 
-                  handleLogout={handleLogout} 
-                  isAdminView={isAdminView} 
-                  setIsAdminView={setIsAdminView} 
-                  apiBaseUrl={API_BASE_URL} // Props mein bhi pass kar diya backup ke liye
-                />
-              ) : (
-                <div className="auth-page-root">
-                  <div className="auth-glass-container">
-                    <h1 className="neon-title">Rail<span>Book</span></h1>
-                    <p className="tagline">India's Premium Train Booking App</p>
-                    <button className="google-premium-btn" onClick={loginWithGoogle}>
-                      <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="G" />
-                      <span>Continue with Google</span>
-                    </button>
-                    <div className="secure-footer">
-                      <span className="icon">🔒</span> Secure SSL Encrypted Connection
-                    </div>
-                  </div>
-                </div>
-              )
-            } 
-          />
-          {/* Admin Dashboard ko bhi Base URL de diya */}
-          <Route path="/admin/dashboard" element={<AdminDashboard apiBaseUrl={API_BASE_URL} />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={user ? <Dashboard user={user} handleLogout={handleLogout} apiBaseUrl={API_BASE_URL} /> : (
+          <div className="auth-page-root">
+            <button className="google-premium-btn" onClick={loginWithGoogle}>
+              Continue with Google
+            </button>
+          </div>
+        )} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Router>
   );
 }
