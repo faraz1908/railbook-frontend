@@ -1,0 +1,199 @@
+:root {
+  --primary: #00bcd4; /* Cyan from Builder.io */
+  --secondary: #0077b6; /* Deep Blue */
+  --accent: #ffc107; /* Yellow from Builder.io */
+  --bg-light: #f8fafc;
+  --text: #1e293b;
+  --shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+body { background: var(--bg-light); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; }
+
+/* ===== TOP NAVBAR (White & Clean) ===== */
+.rb-navbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 80px; background: #fff; border-bottom: 1px solid #e2e8f0;
+  position: sticky; top: 0; z-index: 100;
+}
+.rb-logo { font-size: 1.6rem; font-weight: 800; color: var(--secondary); letter-spacing: -1px; }
+.rb-nav-links span { margin: 0 20px; cursor: pointer; font-weight: 500; color: #64748b; }
+.rb-nav-links span:hover, .rb-nav-links span.active { color: var(--primary); }
+.rb-user-pill { display: flex; align-items: center; gap: 12px; background: #f1f5f9; padding: 5px 15px; border-radius: 50px; }
+.rb-user-pill img { width: 35px; border-radius: 50%; border: 2px solid #fff; }
+.rb-logout-btn { background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.9rem; }
+
+/* ===== HERO BANNER (Cyan Gradient) ===== */
+.rb-hero-banner {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); /* Exact same gradient */
+  padding: 80px 20px; text-align: center; color: #fff;
+}
+.rb-hero-banner h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 10px; }
+.rb-search-card {
+  background: #fff; padding: 30px; border-radius: 15px; display: flex;
+  max-width: 900px; margin: 40px auto -130px; gap: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  align-items: flex-end;
+}
+.search-input-group { flex: 1; text-align: left; }
+.search-input-group label { display: block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px; font-weight: 600; }
+.search-input-group input { width: 100%; border: 1px solid #e2e8f0; padding: 14px; border-radius: 8px; font-size: 1rem; color: #1e293b; }
+.swap-icon { color: #cbd5e1; font-size: 1.5rem; padding-bottom: 10px; }
+.rb-search-trigger { background: var(--accent); color: #000; border: none; padding: 14px 40px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+.rb-search-trigger:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4); }
+
+/* ===== DYNAMIC CONTENT ===== */
+.rb-main-container { max-width: 1200px; margin: 160px auto 50px; padding: 0 20px; }
+.rb-main-container h2 { font-size: 1.8rem; color: #1e293b; margin-bottom: 30px; font-weight: 800; }
+
+/* ===== TRAIN GRID & CARDS ===== */
+.rb-train-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 25px; }
+.rb-train-card { background: #fff; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.rb-train-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary); }
+.card-top { display: flex; justify-content: space-between; align-items: center; }
+.card-top h3 { color: #1e293b; margin: 0; font-size: 1.2rem; font-weight: 700; }
+.rating-pill { background: #fff8e1; color: #ffa000; padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+.train-meta { font-size: 0.8rem; color: #64748b; margin: 8px 0; }
+.route-visual { display: flex; align-items: center; gap: 15px; margin: 20px 0; color: #64748b; font-weight: 500; }
+.route-line { flex: 1; height: 2px; background: #e2e8f0; position: relative; }
+.route-line::after { content: ''; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left-color: #e2e8f0; }
+.card-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+.price-tag { font-size: 1.6rem; font-weight: 800; color: var(--secondary); }
+.book-now-btn { background: var(--primary); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.book-btn-pro:hover, .book-now-btn:hover { background: var(--secondary); transform: translateY(-2px); }
+
+/* ===== MY BOOKINGS ===== */
+.rb-booking-item { background: #fff; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border: 1px solid #e2e8f0; transition: 0.3s; }
+.rb-booking-item:hover { border-color: var(--primary); transform: translateX(5px); }
+.confirmed-pill { background: #e0f2f1; color: #009688; font-size: 0.7rem; padding: 4px 10px; border-radius: 20px; margin-left: 10px; }
+.seat-no { color: var(--primary); font-weight: 700; margin-right: 15px; font-size: 0.9rem; }
+.view-details-btn { background: var(--secondary); color: #fff; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; }
+
+/* ===== ADMIN TABLE ===== */
+.rb-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.rb-table th { background: #f1f5f9; padding: 15px; text-align: left; color: #64748b; }
+.rb-table td { padding: 15px; border-bottom: 1px solid #f1f5f9; color: var(--text); }
+
+/* ===== MODAL ===== */
+.rb-modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); z-index: 200; }
+.rb-modal-card { background: #fff; padding: 40px; border-radius: 20px; width: 400px; text-align: center; }
+.glass-modal input, .rb-modal-card input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; color: #1e293b; }
+.modal-actions { display: flex; gap: 15px; margin-top: 20px; }
+.confirm-btn { flex: 1; background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.cancel-btn { flex: 1; background: #ef4444; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.ticket-card {
+  border-left: 8px solid #0077b6;
+  padding: 30px !important;
+}
+/* Modal Glassmorphism */
+.rb-modal-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2000;
+}
+
+/* Ticket Design */
+.ticket-card {
+  background: #ffffff;
+  width: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-card h3 {
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: white;
+  margin: 0;
+  padding: 22px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ticket-content {
+  padding: 30px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 10px;
+}
+
+.info-row strong {
+  color: #94a3b8;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.info-row span {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* Modern Buttons */
+.modal-actions {
+  display: flex;
+  padding: 0 30px 30px 30px;
+  gap: 12px;
+}
+
+.cancel-btn-danger {
+  flex: 2;
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cancel-btn-danger:hover {
+  background: #e84118;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.close-btn {
+  flex: 1;
+  background: #f1f2f6;
+  color: #2f3542;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.rb-search-card {
+  /* ... previous styles ... */
+  display: flex;
+  flex-wrap: wrap; /* Takki mobile pe sahi dikhe */
+  gap: 15px;
+}
+
+.search-input-group input[type="date"] {
+  cursor: pointer;
+  color: #1e293b;
+  font-family: inherit;
+}
+
+/* My Booking list date style */
+.booking-info small {
+  color: #0077b6;
+  font-weight: 600;
+  display: block;
+  margin-top: 5px;
+}
+

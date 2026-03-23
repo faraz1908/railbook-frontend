@@ -1,0 +1,171 @@
+/* --- RESET & GLOBAL FIXES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Sabse important: alignment fix karne ke liye */
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- LOGIN PAGE ROOT --- */
+.auth-page-root {
+  background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Screen se hilega nahi */
+  top: 0;
+  left: 0;
+}
+
+/* --- GLASS CARD CONTAINER --- */
+.auth-glass-container {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 400px; /* Thoda narrow kiya taaki sleek lage */
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  animation: floatUp 0.8s ease-out;
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- NEON TITLE --- */
+.neon-title {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.neon-title span {
+  background: linear-gradient(90deg, #00f2ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
+}
+
+.tagline {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+/* --- THE PREMIUM GOOGLE BUTTON --- */
+.google-premium-btn {
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.google-premium-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.google-premium-btn span {
+  color: #f8fafc;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Hover effects */
+.google-premium-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #00f2ff;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 242, 255, 0.2);
+}
+
+.google-premium-btn:active {
+  transform: translateY(0);
+}
+
+/* Shine effect */
+.google-premium-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.google-premium-btn:hover::after {
+  left: 100%;
+}
+
+/* --- SECURE FOOTER --- */
+.secure-footer {
+  margin-top: 35px;
+  font-size: 0.8rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+/* --- MY BOOKINGS CARD & BUTTON --- */
+.booking-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.status.booked { color: #00f2ff; text-shadow: 0 0 5px rgba(0, 242, 255, 0.5); }
+.status.cancelled { color: #ff4b2b; text-shadow: 0 0 5px rgba(255, 75, 43, 0.5); }
+
+.cancel-premium-btn {
+  background: rgba(255, 75, 43, 0.1);
+  color: #ff4b2b;
+  border: 1px solid #ff4b2b;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cancel-premium-btn:hover {
+  background: #ff4b2b;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 75, 43, 0.4);
+}

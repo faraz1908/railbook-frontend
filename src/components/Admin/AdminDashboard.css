@@ -1,0 +1,177 @@
+/* Poore layout ko control karne ke liye */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar 260px, baaki bacha hua Content */
+  min-height: 100vh;
+  background-color: #0b0f19;
+  color: white;
+}
+
+/* SIDEBAR FIX */
+.sidebar {
+  background-color: #111827;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.sidebar .logo span { color: #00f2ff; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+  background: rgba(0, 242, 255, 0.1);
+  color: #00f2ff;
+}
+
+/* MAIN CONTENT FIX */
+.main-content {
+  padding: 40px;
+  overflow-y: auto;
+}
+
+/* STATS CARDS (Horizontal line mein) */
+.stats-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  flex: 1; /* Teeno cards barabar size ke */
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon-box {
+  background: rgba(0, 242, 255, 0.1);
+  padding: 12px;
+  border-radius: 12px;
+  color: #00f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-info h4 {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.stat-info p {
+  margin: 5px 0 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* GRAPH & TABLE SECTIONS */
+.graph-section, .recent-trains {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th {
+  text-align: left;
+  color: #94a3b8;
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+}
+
+.admin-table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #334155;
+}
+
+/* Logout Button */
+.logout-btn {
+  margin-top: auto;
+  background: #ef444415;
+  color: #ef4444;
+  border: 1px solid #ef444433;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-form input {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  outline: none;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mini-btn {
+  background: rgba(0, 242, 255, 0.1);
+  color: #00f2ff;
+  border: 1px solid #00f2ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}

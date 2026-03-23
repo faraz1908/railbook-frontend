@@ -1,0 +1,132 @@
+/* Dashboard.css - Pro Admin UI */
+
+/* 1. Main Layout */
+.admin-mode .admin-stats-flex {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 40px;
+}
+
+/* 2. Stat Card - Professional Minimalist */
+.stat-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.01) !important; /* Extremely subtle */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(0, 242, 255, 0.3) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 3. Typography Cleanup */
+.stat-label {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-value {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* 4. Badges - Clean & Flat */
+.trend-badge {
+  margin-top: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.trend-badge.active {
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+}
+
+.trend-badge.idle {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trend-badge.info {
+  background: rgba(0, 242, 255, 0.08);
+  color: #00f2ff;
+  border: 1px solid rgba(0, 242, 255, 0.15);
+}
+
+/* 5. Action Row - Modern Buttons */
+.action-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 24px;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn.primary {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+}
+
+.action-btn.primary:hover {
+  background: #00f2ff;
+  transform: scale(1.02);
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle Grid Background for Admin Mode */
+.admin-mode {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
