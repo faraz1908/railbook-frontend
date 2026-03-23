@@ -1,17 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios'; // ERROR 1 FIX: Axios ko import kiya
+import axios from 'axios'; 
 
 export const AuthContext = createContext();
 
+// 🚀 Live Backend URL (Render)
+const API_BASE_URL = "https://railbook-3mys.onrender.com";
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // ERROR 2: Loading state yahan hai
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // withCredentials zaroori hai cookies/session ke liye
-        const res = await axios.get('http://localhost:5000/auth/login/success', { 
+        // 🔥 Localhost HATA DIYA, ab Render se check hoga
+        const res = await axios.get(`${API_BASE_URL}/auth/login/success`, { 
           withCredentials: true 
         });
         
@@ -20,14 +23,14 @@ export const AuthProvider = ({ children }) => {
         }
       } catch (err) {
         console.log("User not logged in or session expired");
+        setUser(null);
       } finally {
-        setLoading(false); // Success ho ya error, loading band karni hai
+        setLoading(false); 
       }
     };
     fetchUser();
   }, []);
 
-  // Provider mein user, setUser aur loading teeno pass kar rahe hain
   return (
     <AuthContext.Provider value={{ user, setUser, loading }}>
       {children}
